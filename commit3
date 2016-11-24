@@ -1,0 +1,42 @@
+ef quick_sort(L): 
+ 
+	if len(L)<=1: 
+		return L 
+	pivot=L[0] 
+	less = []
+	for x in L:
+		if x<pivot:
+			less.append(x)
+	equal = []
+	for x in L:
+		if x==pivot:
+			equal.append(x)
+	greater= []
+	for x in L:
+		if x>pivot:
+			greater.append(x)
+	return quick_sort(less)+equal+quick_sort(greater) 
+def malejaco(n):
+	L = []
+	for i in range(0,n):
+		L.append(n-i-1)
+	return L
+def losowe(n):
+	L = []
+	a = range(0,n)
+	for i in range(0,n):
+		L.append(random.choice(a))
+	return L
+n = input('Podaj ilosc danych: ')
+w = input('Losowo/Malejaco [1/2]: ') 
+if int(w) == 1:
+	L = losowe(int(n))
+	print(L)
+elif int(w) == 2:
+	L = malejaco(int(n))
+	print(L)
+else:
+	print('napisales bzdure')
+L = quick_sort(L)
+print('Po posortowaniu:')
+print(L)
